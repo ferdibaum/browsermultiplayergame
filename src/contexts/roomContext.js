@@ -5,7 +5,7 @@ export const RoomContext = createContext({
 });
 
 export function RoomProvider({ children }) {
-  const [room, setRoom] = useState(0);
+  const [room, setRoom] = useState(undefined);
   useEffect(function () {}, [room]);
 
   return (

@@ -11,6 +11,19 @@ import { PageTemplate } from "./PageTemplate";
 export function Landing() {
   const navigate = useNavigate();
   const [name, setName] = useState(getNameFromLocalStorage());
+
+  async function newGame() {
+    const owner = getUserFromLocalStorage();
+    const { data } = await supabase.from("rooms").insert([
+      {
+        players: [owner],
+        owner: owner,
+      },
+    ]);
+    console.log(data);
+    navigate(`/game/${data[0].id}`);
+  }
+
   if (!name) {
     return <NewName setName={setName} />;
   }
@@ -19,17 +32,7 @@ export function Landing() {
     <PageTemplate>
       <div
         className="p-3 text-white text-center bg-orange-600 rounded-lg cursor-pointer bg-opacity-80 min-w-[150px]"
-        onClick={async () => {
-          const owner = getUserFromLocalStorage();
-          const { data } = await supabase.from("rooms").insert([
-            {
-              players: [owner],
-              owner: owner,
-            },
-          ]);
-          console.log(data);
-          navigate(`/game/${data[0].id}`);
-        }}
+        onClick={newGame}
       >
         New Game
       </div>

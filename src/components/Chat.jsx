@@ -28,16 +28,20 @@ export function Chat({ chat, id }) {
   );
 
   return (
-    <div className="flex flex-col justify-between p-3 text-white border rounded-lg">
+    <div className="flex flex-col justify-between w-1/4 p-3 text-white border rounded-lg">
       <div className="text-lg font-bold">Chat</div>
       <div>
         <div ref={ref} className="overflow-y-hidden max-h-[50vh]">
           {chat &&
             chat.map((e, i) => (
-              <div
-                className="whitespace-pre-wrap"
-                key={`e${i}`}
-              >{`${e.name}: ${e.msg}`}</div>
+              <div className="my-1 whitespace-pre-wrap" key={`e${i}`}>
+                <span
+                  className={`${
+                    e.name === "Game Log" ? "text-red-500" : "text-green-500"
+                  }`}
+                >{`${e.name}:`}</span>
+                {` ${e.msg}`}
+              </div>
             ))}
         </div>
         <form className="flex flex-col" onSubmit={onFormSubmit}>

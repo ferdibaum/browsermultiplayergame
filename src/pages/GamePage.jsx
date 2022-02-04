@@ -14,6 +14,7 @@ import { PageTemplate } from "./PageTemplate";
 
 export function GamePage() {
   const { room, setRoom } = useContext(RoomContext);
+  const [name, setName] = useState(getNameFromLocalStorage());
 
   const { id } = useParams();
 
@@ -68,11 +69,11 @@ export function GamePage() {
           setRoom(newData[0]);
         }
       }
-      if (getNameFromLocalStorage()) {
+      if (name) {
         join();
       }
     },
-    [id, setRoom]
+    [id, setRoom, name]
   );
 
   useEffect(
@@ -82,7 +83,6 @@ export function GamePage() {
     [id, connect]
   );
 
-  const [name, setName] = useState(getNameFromLocalStorage());
   if (!name) {
     return <NewName setName={setName} />;
   }

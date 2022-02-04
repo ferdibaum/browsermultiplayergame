@@ -29,7 +29,7 @@ export function Game() {
 
     let msg = `${
       room.gameData.currentQuestion.question
-    }\n ${getNameFromLocalStorage()} hat ${input} geantwortet!\n`;
+    }\n${getNameFromLocalStorage()} hat ${input} geantwortet!\n`;
     let name = "Game Log";
 
     let newPoints = { ...room.gameData.points };
@@ -42,7 +42,7 @@ export function Game() {
     } else {
       msg =
         msg +
-        `Die Antwort war falsch. Kein Punkt!!\n Die richtige Antwort war: ${room.gameData.currentQuestion.answer}`;
+        `Die Antwort war falsch. Kein Punkt!!\nDie richtige Antwort war: ${room.gameData.currentQuestion.answer}`;
     }
 
     await supabase
