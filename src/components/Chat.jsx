@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import { getNameFromLocalStorage } from "../utils/getUserNameFromLocalStorage";
 import { supabase } from "./../supabaseClient";
 
-export function Chat({ chat, name, id }) {
+export function Chat({ chat, id }) {
   const ref = useRef();
 
   const [input, setInput] = useState("");
@@ -12,8 +13,8 @@ export function Chat({ chat, name, id }) {
       .from("rooms")
       .update({
         chat: chat
-          ? [...chat, { msg: input, name: name }]
-          : [{ msg: input, name: name }],
+          ? [...chat, { msg: input, name: getNameFromLocalStorage() }]
+          : [{ msg: input, name: getNameFromLocalStorage() }],
       })
       .match({ id: id });
     setInput("");
