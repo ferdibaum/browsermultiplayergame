@@ -34,7 +34,10 @@ export function Chat({ chat, id }) {
         <div ref={ref} className="overflow-y-hidden max-h-[50vh]">
           {chat &&
             chat.map((e, i) => (
-              <div key={`e${i}`}>{`${e.name}: ${e.msg}`}</div>
+              <div
+                className="whitespace-pre-wrap"
+                key={`e${i}`}
+              >{`${e.name}: ${e.msg}`}</div>
             ))}
         </div>
         <form className="flex flex-col" onSubmit={onFormSubmit}>

@@ -46,7 +46,7 @@ export function GamePage() {
 
   useEffect(
     function () {
-      async function getDate() {
+      async function join() {
         const { data } = await supabase.from("rooms").select("*").eq("id", id);
 
         let playersInDatabase = data[0].players;
@@ -69,7 +69,7 @@ export function GamePage() {
         }
       }
       if (getNameFromLocalStorage()) {
-        getDate();
+        join();
       }
     },
     [id, setRoom]
