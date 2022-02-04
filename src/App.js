@@ -9,7 +9,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/game/:id" element={<GamePage />} />
+          <Route path="game/:id" element={<GamePage />} />
         </Routes>
       </BrowserRouter>
     </RoomProvider>
