@@ -20,7 +20,6 @@ export function Landing() {
         owner: owner,
       },
     ]);
-    console.log(data);
     navigate(`/game/${data[0].id}`);
   }
 

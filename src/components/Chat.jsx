@@ -9,6 +9,7 @@ export function Chat({ chat, id }) {
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
+    if (!input) return;
     await supabase
       .from("rooms")
       .update({
